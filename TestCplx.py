@@ -1,15 +1,17 @@
 import unittest
-import CplxNum.py as lc
+import CplxNum as lc
 
 class Testcplxfunc(unittest.TestCase):
 
     def test_sumacplx(self):
+        #Test 1. Suma entre números complejos
         #(3 + 5i) + (-2.6 + 6.8i) = 0.4 + 11.8i
         c1 = (3, 5)
         c2 = (-2.6, 6.8)
         suma = lc.sumacplx(c1, c2)
         self.assertAlmostEqual(suma[0], 0.4)
         self.assertAlmostEqual(suma[1], 11.8)
+        # Test 2. Suma entre números complejos
         #(3 + 8i) + (-4 + 10.7i) = -1 + 18.7i
         c1 = (3, 8)
         c2 = (-4, 10.7)
@@ -69,6 +71,40 @@ class Testcplxfunc(unittest.TestCase):
         modulo = lc.modulocplxplx(c)
         self.assertAlmostEqual(modulo, 13)
 
+    def test_conjugate_complex(self):
+        # 3 + 4i = 3 - 4i
+        c = (3, 4)
+        conjugado = lc.conjucplx(c)
+        self.assertEqual(conjugado, (3, -4))
+        # 8 + 10i = 8 - 10i
+        c = (8, 10)
+        conjugado = lc.conjucplx(c)
+        self.assertEqual(conjugado, (8, -10))
+
+    def test_polar_to_cartesian(self):
+        # 5 + 0.9272952180016122 = 3, 4
+        cartesian = lc.polar_to_cart((5, 0.9272952180016122))
+        self.assertAlmostEqual(cartesian[0], 3)
+        self.assertAlmostEqual(cartesian[1], 4)
+        # 0 + 0 = 0, 0
+        cartesian = lc.polar_to_cart((0, 0))
+        self.assertEqual(cartesian, (0, 0))
+
+    def test_cartesian_to_polar(self):
+        # 3 + 4i = 5 + 0.9272952180016122
+        polar = lc.cart_to_polar((3, 4))
+        self.assertAlmostEqual(polar[0], 5)
+        self.assertAlmostEqual(polar[1], 0.9272952180016122)
+        # 0 + 0 = 0 + 0
+        polar = lc.cart_to_polar((0, 0))
+        self.assertEqual(polar, (0, 0))
+
+    def test_phase_complex(self):
+        result = lc.fasecplx((1, 1))
+        self.assertAlmostEqual(result, 0.7853981633974483)
+        result = lc.fasecplx((1, 0))
+        self.assertAlmostEqual(result, 0.0)
 
 if __name__ == '__main__':
     unittest.main()
+    
