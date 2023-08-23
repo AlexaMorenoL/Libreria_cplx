@@ -31,19 +31,23 @@ def modulocplx(c):
     modulo = math.sqrt(c[0]**2 + c[1]**2)
     return modulo
 
-def conjucplx(c1, c2):
-    conju = c1 - c2
-    return conju
+def conjucplx(c):
+    return (c[0], - c[1])
 
-def cartesian_to_polarcplx(c):
-    x = c[0]
-    y = c[1]
-    resultado = round(math.sqrt(x**2 + y**2), 2)
-    theta = round(math.atan2(y, x))
-    return (resultado, theta)
+def polar_to_cart(polar):
+    r, theta = polar
+    real = r * math.cos(theta)
+    imaginaria = r * math.sin(theta)
+    return (real, imaginaria)
+
+def cart_to_polar(cartesian):
+    real, imaginaria = cartesian
+    r = modulocplx(cartesian)
+    theta = math.atan2(imaginaria, real)
+    return (r, theta)
 
 def fasecplx(c):
-    fase = round(math.atan2(c[1], c[0]), 2)
+    fase = math.atan2(c[1], c[0])
     return fase
 
 if __name__ == '__main__':
@@ -54,5 +58,8 @@ if __name__ == '__main__':
     print("La división de los números complejos es:", div_cplx((4,2),(5,3)))
     print("El módulo de los números complejos es:", modulocplx(3, -2.6))
     print("El conjugado de los números complejos es:", conjucplx(3, -2.6))
-    print("La coordenada cartesiana convertida en coordenada polar es:", cartesian_to_polarcplx((math.sqrt(2), math.pi /4)))
+    print("La coordenada polar convertida en coordenada cartesiana es:", polar_to_cart())
+    print("La coordenada cartesiana convertida en coordenada polar es:", cart_to_polar())
     print("La fase del número complejo es:", fasecplx((3, 3)))
+    
+    
