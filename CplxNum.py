@@ -32,10 +32,10 @@ def modulocplx(c):
     return modulo
 
 def conjucplx(c):
-    return (c[0], - c[1])
+    return (c[0], -c[1])
 
 def polar_to_cart(polar):
-    r, theta = polar
+    r, theta = polar, 0
     real = r * math.cos(theta)
     imaginaria = r * math.sin(theta)
     return (real, imaginaria)
@@ -52,14 +52,14 @@ def fasecplx(c):
 
 if __name__ == '__main__':
     print_hi('PyCharm')
+    #IGNORAR. Esto es parte de las pruebas de funcionamiento (desarrollador)
     print("La suma de los números complejos es:", sumacplx((4,2),(3,5)))
     print("La resta de los números complejos es:", restacplx((4,2),(3,5)))
     print("La multiplicación de los números complejos es:", multcplx((2, 6),(3, 5)))
     print("La división de los números complejos es:", div_cplx((4,2),(5,3)))
-    print("El módulo de los números complejos es:", modulocplx(3, -2.6))
-    print("El conjugado de los números complejos es:", conjucplx(3, -2.6))
-    print("La coordenada polar convertida en coordenada cartesiana es:", polar_to_cart())
-    print("La coordenada cartesiana convertida en coordenada polar es:", cart_to_polar())
+    print("El módulo de los números complejos es:", modulocplx((3, 5)))
+    print("El conjugado de los números complejos es:", conjucplx((3, -2.6)))
+    print("La coordenada polar convertida en coordenada cartesiana es:", polar_to_cart(13))
+    print("La coordenada cartesiana convertida en coordenada polar es:", cart_to_polar((11, 0)))
     print("La fase del número complejo es:", fasecplx((3, 3)))
-    
-    
+
